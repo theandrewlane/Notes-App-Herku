@@ -1,15 +1,20 @@
 extends layout
 
 block content
-	h1.text-center All Notes
-	.panel.panel-default
-		for note in notes
-			.panel-body
-				a(href='/notes/#{note._id}') #{note.content}
-				form(action='/notes/destroy/#{note._id}', method='post')
-					input.btn.btn-danger.pull-right(type='submit', value='Delete Note')
-	form(method='post', action='/notes/create')
-		.input-group
-			input.form-control(type='text', placeholder='Create a note here!', name='content')
-			span.input-group-btn
-				input.btn.btn-success(type='submit', value='Add Note')
+    h1.text-center All Notes (#{notes.length})
+    .panel.panel-default
+        for note in notes
+            .panel-body
+                    form(action='/notes/destroy/#{note._id}', method='post')
+                        p #[b Note Text:&nbsp;]
+                            a(href='/notes/#{note._id}') #{note.content}
+                            input.btn.btn-danger.pull-right(type='submit', value='Delete Note')
+                            p #[b Updated:] #{note.updated_at}
+            hr
+    hr
+    form(method='post', action='/notes/create')
+
+        .form-group
+            textarea.form-control(type='text', placeholder='Enter text here to create a note...', name='content')
+            span.input-group-btn
+                input.btn.btn-success(type='submit', value='Add Note')
