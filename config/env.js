@@ -9,7 +9,7 @@ module.exports = {
 	},
 	production: {
 		rootPath: rootPath,
-		database: 'mongodb://jasonshark:multivision@ds037478.mongolab.com:37478/multivision',
+		database: 'mongodb://andrew:andrew@ds015760.mlab.com:15760/heroku_mh85n5vc',
 		port: process.env.PORT || 80
 	}
 };
