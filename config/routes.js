@@ -5,7 +5,7 @@ module.exports = function(app){
 	var main = require('../routes/main');
 	var todo = require('../routes/todo');
 	var todoRouter = express.Router();
-	app.use('/todos', todoRouter);
+	app.use('/notes', todoRouter);
 
 	app.get('/', main.index);
 	todoRouter.get('/', todo.all);

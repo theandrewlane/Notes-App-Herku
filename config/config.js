@@ -3,14 +3,11 @@ var logger = require('morgan');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var favicon = require('serve-favicon');
 
 module.exports = function(app, envConfig){
 	// view engine setup
 	app.set('views', path.join(envConfig.rootPath, 'views'));
 	app.set('view engine', 'jade');
-
-	//app.use(favicon(envConfig.rootPath + '/public/favicon.ico'));
 	app.use(logger('dev'));
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded());
