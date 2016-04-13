@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1.text-center All Notes (#{notes.length})
+    .panel.panel-default
+        for note in notes
+            .panel-body
+                    form(action='/notes/destroy/#{note._id}', method='post')
+                        p #[b Note Text:&nbsp;]
+                            a(href='/notes/#{note._id}') #{note.content}
+                            input.btn.btn-danger.pull-right(type='submit', value='Delete Note')
+                            p #[b Updated:] #{note.updated_at}
+            hr
+    hr
+    form(method='post', action='/notes/create')
+
+        .form-group
+            textarea.form-control(type='text', placeholder='Enter note text here...', name='content')
+            div
+            span.form-group-btn
+                input.btn.btn-success.btn-large(type='submit', value='Add Note')
